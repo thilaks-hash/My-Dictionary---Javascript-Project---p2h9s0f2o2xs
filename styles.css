@@ -1,1 +1,19 @@
-
+.heading {
+  text-align: center;
+}
+.container {
+  display: grid;
+  place-items: center;
+}
+.container input[type="text"] {
+  text-align: center;
+  padding: 10px;
+}
+#search-btn {
+  padding: 10px;
+  margin: 10px;
+}
+#search-btn:hover {
+  background-color: rgb(71, 66, 66);
+  color: white;
+}
