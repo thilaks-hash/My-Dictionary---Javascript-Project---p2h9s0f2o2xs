@@ -17,11 +17,14 @@
         placeholder="Search your word here"
         autocomplete="off"
       />
-      <button id="search-btn">Search</button>
+      <button id="search-btn" onclick="search()">Search</button>
       <div class="card" id="cards"></div>
-      <div class="audio" id="audio"></div>
-      <button id="searchHistory-btn">Search History</button>
-      <div id="searchHistory" class="searchHistory"></div>
+      <button
+        id="searchHistory-btn"
+        onclick="window.location.href='./seachHistory.html'"
+      >
+        Search History
+      </button>
     </div>
     <script src="./App.js"></script>
   </body>
