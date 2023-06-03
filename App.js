@@ -1,6 +1,7 @@
 const searchInput = document.getElementById("search");
-const wordCard = document.createElement("p");
+// const wordCard = document.createElement("p");
 const resultCard = document.getElementById("cards");
+
 const word = document.createElement("h2");
 const para = document.createElement("p");
 const audio = document.createElement("audio");
@@ -22,44 +23,61 @@ async function search() {
       `https://api.dictionaryapi.dev/api/v2/entries/en/${searchInput.value.toLowerCase()}`
     );
     const data = await response.json();
-    console.log(data);
+
     displayData(data);
   } catch (error) {
-    console.log("error");
+    console.log(error);
   }
-  console.log("seaaa");
+
   var searchhistory = searchInput.value.trim();
+  console.log(data, "dattaaaa");
   if (searchhistory !== "") {
     addhistory(searchhistory);
     searchInput.value = "";
-    console.log("search");
     savedhistory();
   }
 }
 const displayData = (data) => {
-  console.log("start");
-  const heading = data[0].word;
-  word.textContent = heading;
-  wordCard.appendChild(word);
-  const meaning = data[0].meanings[1]
-    ? data[0].meanings[1].definitions[0].definition
-    : data[0].meanings[2].definitions[0].definition;
-  console.log(meaning);
-  para.innerText = meaning;
-  wordCard.appendChild(para);
+  const wordCard = document.createElement("p");
 
-  const audio_1 = data[0].phonetics[0].audio;
-  audio.src = audio_1;
-  audio.controls = true;
-  wordCard.appendChild = audio_1;
-  resultCard.appendChild(wordCard);
+  if (typeof data == "object" && data.title) {
+    word.textContent = data.title;
+    wordCard.appendChild(word);
+    resultCard.appendChild(wordCard);
+  } else {
+    const heading = data[0].word;
+    word.textContent = heading;
+    wordCard.appendChild(word);
+    resultCard.appendChild(wordCard);
+
+    //idk why you are using this check... Whats the point of this condition?
+    // I'll comment this line for now
+    // If you added this line for a reason you can un comment it
+
+    // const meaning = data[0].meanings[1]
+    //   ? data[0]?.meanings[1]?.definitions[0]?.definition
+    //   : data[0]?.meanings[2]?.definitions[0]?.definition;
+
+    const meaning = data[0]?.meanings[0]?.definitions[0]?.definition;
+    para.innerText = meaning;
+    wordCard.appendChild(para);
+    resultCard.appendChild(wordCard);
+    const audCard = document.createElement("p");
+    const audio_1 = data[0].phonetics[1].audio;
+    let aud = `<audio src="${data[0].phonetics[0].audio}" controls>`;
+    audCard.innerHTML = aud;
+    wordCard.appendChild(audCard);
+    resultCard.appendChild(wordCard);
+  }
 };
+
 function addhistory(text) {
+  console.log(text);
   if (!historyList) {
     createHistorylist();
     console.log("add hist");
   }
-  var history = { text: text };
+  var history = { text: text, meaning: meaning };
   searchlist.push(history);
   renderHistorylist(history);
 }

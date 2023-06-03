@@ -17,3 +17,9 @@
   background-color: rgb(71, 66, 66);
   color: white;
 }
+body {
+  background-image: url("./dictionary\ pic.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
