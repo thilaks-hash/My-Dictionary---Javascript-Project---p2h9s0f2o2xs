@@ -23,3 +23,9 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+.wordCard {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  margin: 5px;
+}
