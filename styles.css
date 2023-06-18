@@ -70,3 +70,24 @@ body {
   text-align: center;
   color: beige;
 }
+@media (max-width: 1200px) {
+  .resultcard {
+    background-color: white;
+    margin: 10px 50px;
+  }
+}
+@media (max-width: 500px) {
+  .searches {
+    display: inline;
+  }
+  .resultcard {
+    margin: auto;
+  }
+  audio {
+    max-width: 100px;
+  }
+  body {
+    background-color: coral;
+    background-image: none;
+  }
+}

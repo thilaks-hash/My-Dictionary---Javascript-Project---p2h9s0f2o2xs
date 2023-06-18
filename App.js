@@ -7,7 +7,7 @@ const audio = document.createElement("audio");
 const historybutton = document.getElementById("searchHistory-btn");
 const searchList = document.getElementById("historylist");
 var historyList = null;
-var searchlist;
+var searchlist = [];
 window.addEventListener("load", function () {
   var savedhistory = localStorage.getItem("searchlist");
   if (savedhistory) {
@@ -39,24 +39,23 @@ async function search() {
   }
 }
 const displayData = (data, searchhistory) => {
-  const wordCard = document.createElement("p");
-
   if (typeof data == "object" && data.title) {
+    resultCard.innerText = "";
     const result = data.title;
     word.textContent = result;
-    wordCard.appendChild(word);
-    resultCard.appendChild(wordCard);
+    const parag = document.createElement("p");
+    parag.appendChild(word);
+
+    resultCard.appendChild(parag);
     addhistory(searchhistory, result);
   } else {
     const heading = data[0].word;
     word.textContent = heading;
+    const wordCard = document.createElement("p");
     wordCard.appendChild(word);
-    resultCard.appendChild(wordCard);
-
     const meaning = data[0]?.meanings[0]?.definitions[0]?.definition;
     para.innerText = meaning;
     wordCard.appendChild(para);
-    resultCard.appendChild(wordCard);
     const audio_1 = data[0].phonetics[1].audio;
     audio.src = audio_1;
     audio.controls = true;
