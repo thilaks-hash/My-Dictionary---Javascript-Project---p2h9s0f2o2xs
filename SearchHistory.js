@@ -3,9 +3,13 @@ var searchList = localStorage.getItem("searchlist");
 
 function deleteItemFromLocalStorage(index) {
   const storedItems = JSON.parse(localStorage.getItem("searchlist")) || [];
-  const updatedItems = storedItems.filter((item) => item.index !== index);
-  console.log(updatedItems, "updatedItems");
-  localStorage.setItem("searchlist", JSON.stringify(updatedItems));
+  storedItems.splice(index, 1);
+  for (let i = index; i < storedItems.length; i++) {
+    storedItems[i].index = i; // Assuming each value has an 'index' property
+  }
+  //const updatedItems = storedItems.filter((item) => item.index !== index);
+  //console.log(updatedItems, "updatedItems");
+  localStorage.setItem("searchlist", JSON.stringify(storedItems));
 }
 
 var searchCard = window.addEventListener("load", function () {
@@ -28,6 +32,7 @@ var searchCard = window.addEventListener("load", function () {
       historylist1.setAttribute("class", "resultcard");
       deletebutton.addEventListener("click", () => {
         deleteItemFromLocalStorage(index);
+        console.log(historylist1);
         historylist1.style.display = "none";
       });
     });
