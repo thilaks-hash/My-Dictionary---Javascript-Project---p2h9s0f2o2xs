@@ -1,37 +1,34 @@
 var histroyList = document.getElementById("histroylist");
 var searchList = localStorage.getItem("searchlist");
+
+function deleteItemFromLocalStorage(index) {
+  const storedItems = JSON.parse(localStorage.getItem("searchlist")) || [];
+  const updatedItems = storedItems.filter((item) => item.index !== index);
+  console.log(updatedItems, "updatedItems");
+  localStorage.setItem("searchlist", JSON.stringify(updatedItems));
+}
+
 var searchCard = window.addEventListener("load", function () {
   if (searchList) {
     searchList = JSON.parse(searchList);
-
-    searchList.forEach(function (searches) {
-      console.log(searches);
-      let texts = searches.text;
+    searchList.forEach(function (searches, index) {
       var listItem = document.createElement("li");
+      listItem.style.listStyle = "none";
       var listdef = document.createElement("p");
+      var historylist1 = document.createElement("div");
       listItem.textContent = searches.text;
       listdef.textContent = searches.meaning;
-      histroyList.appendChild(listItem);
-      histroyList.appendChild(listdef);
+      historylist1.appendChild(listItem);
+      historylist1.appendChild(listdef);
       const deletebutton = document.createElement("button");
       deletebutton.setAttribute("id", "deletebutton");
       deletebutton.innerHTML = "delete";
-      histroyList.appendChild(deletebutton);
+      historylist1.appendChild(deletebutton);
+      histroyList.appendChild(historylist1);
+      historylist1.setAttribute("class", "resultcard");
       deletebutton.addEventListener("click", () => {
-        var itemRemoved = listdef.textContent;
-        listdef.innerText = "";
-
-        for (let i = 0; i < searchList.length; i++) {
-          if (searchList[i].meaning === itemRemoved) {
-            var item = localStorage.key(i);
-
-            localStorage.removeItem(item);
-          }
-        }
-
-        let temp = searchList.filter((item) => item.text != texts);
-        localStorage.setItem("searchlist", JSON.stringify(temp));
-        // delete localStorage.searches.text;
+        deleteItemFromLocalStorage(index);
+        historylist1.style.display = "none";
       });
     });
   }
