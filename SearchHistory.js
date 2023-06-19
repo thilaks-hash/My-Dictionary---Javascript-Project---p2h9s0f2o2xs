@@ -10,8 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
       searchList.forEach((searches) => {
         var historylist1 = document.createElement("div");
 
-        var listItem = document.createElement("li");
-        listItem.style.listStyle = "none";
+        var listItem = document.createElement("p");
 
         var listdef = document.createElement("p");
         var historylist1 = document.createElement("div");

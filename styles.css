@@ -82,7 +82,9 @@ body {
     display: inline;
   }
   .resultcard {
-    margin: auto;
+    margin: 5px;
+    text-align: center;
+    padding: 5px;
   }
   audio {
     max-width: 100px;
