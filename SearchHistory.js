@@ -6,12 +6,12 @@ function deleteItemFromLocalStorage(index) {
   storedItems.splice(index, 1);
   for (let i = index; i < storedItems.length; i++) {
     storedItems[i].index = i;
-
-    // Assuming each value has an 'index' property
+    console.log(storedItems.length);
   }
+  localStorage.setItem("searchlist", JSON.stringify(storedItems));
+
   //const updatedItems = storedItems.filter((item) => item.index !== index);
   //console.log(updatedItems, "updatedItems");
-  localStorage.setItem("searchlist", JSON.stringify(storedItems));
 }
 
 var searchCard = window.addEventListener("load", function () {

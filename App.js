@@ -12,7 +12,7 @@ window.addEventListener("load", function () {
   var savedhistory = localStorage.getItem("searchlist");
   if (savedhistory) {
     searchlist = JSON.parse(savedhistory);
-    //createHistorylist();
+    createHistorylist();
     renderHistory();
   }
 });
@@ -72,9 +72,9 @@ const displayData = (data, searchhistory) => {
 };
 
 function addhistory(text, meaning, index) {
-  // if (!historyList) {
-  //   createHistorylist();
-  // }
+  if (!historyList) {
+    createHistorylist();
+  }
   var history = { text: text, meaning: meaning };
   searchlist.push({ index, text, meaning });
   renderHistorylist(history);
@@ -94,10 +94,10 @@ function renderHistorylist(history) {
 }
 function createHistorylist() {
   historyList = document.createElement("ul");
-  //   //historyList.style.display = "none";
-  //   console.log(historyList, "historyList");
+  historyList.style.display = "none";
+  console.log(historyList, "historyList");
   searchList.appendChild(historyList);
-  //   console.log(searchList);
+  console.log(searchList);
 }
 function savedhistory() {
   localStorage.setItem("searchlist", JSON.stringify(searchlist));
