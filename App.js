@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("search");
   const resultCard = document.getElementById("cards");
+
   const searchButton = document.getElementById("search-btn");
   const word = document.createElement("h2");
   const para = document.createElement("p");
@@ -33,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   const displayData = (data, searchhistory) => {
+    resultCard.setAttribute("class", "resultcard");
+
     if (typeof data == "object" && data.title) {
       resultCard.innerText = "";
       const result = data.title;
@@ -57,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
       audio.style.padding = "5px";
       wordCard.appendChild(audio);
       resultCard.appendChild(wordCard);
-      resultCard.setAttribute("class", "resultcard");
       const searchList = JSON.parse(localStorage.getItem("searchList")) || [];
       console.log(searchList, "searchList");
       savedhistory(searchhistory, meaning);
