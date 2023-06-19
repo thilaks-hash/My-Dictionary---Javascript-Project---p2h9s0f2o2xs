@@ -12,7 +12,7 @@
   padding: 10px;
   margin: 10px;
   background-color: transparent;
-  color: skyblue;
+  color: gold;
   border-radius: 5px;
   border-color: white;
 }
@@ -50,6 +50,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  background-color: aliceblue;
 }
 .resultcard {
   color: black;
