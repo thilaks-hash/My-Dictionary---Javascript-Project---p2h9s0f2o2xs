@@ -1,6 +1,10 @@
 var histroyList = document.getElementById("histroylist");
 var searchList = localStorage.getItem("searchlist");
-
+function clearAll() {
+  localStorage.removeItem("searchlist");
+  histroyList.style.display = "none";
+  searchlist = [];
+}
 function deleteItemFromLocalStorage(index) {
   const storedItems = JSON.parse(localStorage.getItem("searchlist")) || [];
   storedItems.splice(index, 1);
