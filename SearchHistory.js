@@ -5,7 +5,9 @@ function deleteItemFromLocalStorage(index) {
   const storedItems = JSON.parse(localStorage.getItem("searchlist")) || [];
   storedItems.splice(index, 1);
   for (let i = index; i < storedItems.length; i++) {
-    storedItems[i].index = i; // Assuming each value has an 'index' property
+    storedItems[i].index = i;
+
+    // Assuming each value has an 'index' property
   }
   //const updatedItems = storedItems.filter((item) => item.index !== index);
   //console.log(updatedItems, "updatedItems");

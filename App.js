@@ -92,13 +92,13 @@ function renderHistorylist(history) {
   li.appendChild(textNode);
   historyList.appendChild(li);
 }
-// function createHistorylist() {
-//   historyList = document.createElement("ul");
-//   //historyList.style.display = "none";
-//   console.log(historyList, "historyList");
-//   searchList.appendChild(historyList);
-//   console.log(searchList);
-// }
+function createHistorylist() {
+  historyList = document.createElement("ul");
+  //   //historyList.style.display = "none";
+  //   console.log(historyList, "historyList");
+  searchList.appendChild(historyList);
+  //   console.log(searchList);
+}
 function savedhistory() {
   localStorage.setItem("searchlist", JSON.stringify(searchlist));
 }
