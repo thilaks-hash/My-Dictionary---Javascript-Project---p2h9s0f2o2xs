@@ -96,7 +96,7 @@ function createHistorylist() {
   historyList = document.createElement("ul");
   historyList.style.display = "none";
   console.log(historyList, "historyList");
-  searchList.appendChild(historyList);
+  searchlist.appendChild(historyList);
   console.log(searchList);
 }
 function savedhistory() {
