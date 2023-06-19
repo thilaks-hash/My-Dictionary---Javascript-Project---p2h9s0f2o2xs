@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const para = document.createElement("p");
   const audio = document.createElement("audio");
   //var searchlist = [];
+  resultCard.innerHTML = "";
+
   searchButton.addEventListener("click", handleSearch);
   async function handleSearch() {
     try {
